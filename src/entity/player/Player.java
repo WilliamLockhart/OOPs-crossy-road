@@ -17,12 +17,12 @@ public class Player extends Entity{
         //create player hitbox
         double[] dims = sprite.getDimensions();
         PlayerHitBox hitBox = new PlayerHitBox(dims[0], dims[1], 0);
-        sprite.setHitBox(hitBox);
+        setHitBox(hitBox);
         //animation stuff
         this.orientationAnimator = new OrientationAnimator();
         this.orientation = PlayerOrientation.FORWARD_RIGHT;
         this.sprite.setSpriteImage(orientationAnimator.getImage(orientation));
-        this.hopAnimator = new HopAnimator(sprite);
+        this.hopAnimator = new HopAnimator(this);
     }
 
     private void setOrientation(PlayerOrientation orientation) {

@@ -18,7 +18,7 @@ public class ImageRenderer {
     }
 
     public void drawSprite(Sprite sprite) {
-        double[] position = sprite.getEntityPosition();      // [centerX, centerY]
+        double[] position = sprite.getPosition();      // [centerX, centerY]
         double[] size = sprite.getDimensions();       // [width, height]
 
         double centerX = position[0]; double centerY = position[1];

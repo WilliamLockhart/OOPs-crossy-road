@@ -18,7 +18,7 @@ import entity.player.Player;
 import sprite.Sprite;
 
 public class Main extends Application {
-    private static final boolean DISPLAY_HITBOXES = false;
+
 
     private WindowManager windowManager;
     private ImageRenderer imageRenderer;
@@ -49,8 +49,6 @@ public class Main extends Application {
         List<Sprite> gameSprites = gameManager.getAllSprites();
         for(Sprite sprite : gameSprites){
             imageRenderer.drawSprite(sprite);
-            if(DISPLAY_HITBOXES)
-                imageRenderer.drawHitbox(sprite.getHitBox());
         }
     }
 

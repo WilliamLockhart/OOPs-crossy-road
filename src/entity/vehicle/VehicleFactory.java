@@ -27,8 +27,8 @@ public class VehicleFactory {
             dir
         );
 
-        Sprite carSprite = car.getSprite();
-        carSprite.setHitBox(createHitBox(CAR_W, CAR_H, car.getAngleRad(), false));
+
+        car.setHitBox(createHitBox(CAR_W, CAR_H, car.getAngleRad(), false));
         return car;
     }
 
@@ -40,8 +40,7 @@ public class VehicleFactory {
             dir
         );
 
-        Sprite truckSprite = truck.getSprite();
-        truckSprite.setHitBox(createHitBox(TRUCK_W, TRUCK_H, truck.getAngleRad(), true));
+        truck.setHitBox(createHitBox(TRUCK_W, TRUCK_H, truck.getAngleRad(), true));
         return truck;
     }
 

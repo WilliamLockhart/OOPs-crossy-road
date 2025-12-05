@@ -7,10 +7,10 @@ import sprite.HitBox.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import entity.*;
 import entity.vehicle.*;;
 
-public abstract class Lane {
+public abstract class Lane extends Entity {
 
     private static final double LANE_WIDTH  = 1800.0;
     private static final double LANE_HEIGHT = 100.0;
@@ -24,17 +24,18 @@ public abstract class Lane {
         double y = generateYPos(index);
 
         HitBox hitBox = new HitBox(LANE_WIDTH, LANE_HEIGHT, LANE_ANGLE);
-        hitBox.setHitBoxPosition(x, y);
 
         laneSprite = SpriteFactory.generateSprite(
             fileName,
             x, y,
             LANE_WIDTH, LANE_HEIGHT
         );
-        laneSprite.setHitBox(hitBox);
+
+        this.sprite = laneSprite;
+        hitBox.setHitBoxPosition(x, y);
+        setHitBox(hitBox);
         laneSprite.setRotationDeg(LANE_ANGLE);
     }
-
     public abstract void update(double dt);
 
     //getters
@@ -44,14 +45,14 @@ public abstract class Lane {
         return sprites;
     }
 
-    public double[] getCenterPosition() { return laneSprite.getEntityPosition();}
+    public double[] getCenterPosition() { return laneSprite.getPosition();}
 
     //conditional checks
     public boolean hitAVehicle(HitBox playerHitBox){
         return false; //default
     }
 
-    public boolean intersects(HitBox hb) {return laneSprite.getHitBox().checkCollision(hb);}
+    public boolean intersects(HitBox hb) {return getHitBox().checkCollision(hb);}
 
 
     // helper functions
@@ -69,7 +70,7 @@ public abstract class Lane {
 
     protected double[] getLanePositionForCarTravellingInDirection(Vehicle.Direction carDirection) {
         // Sprite center & dimensions
-        double[] pos = laneSprite.getEntityPosition(); // [centerX, centerY]
+        double[] pos = laneSprite.getPosition(); // [centerX, centerY]
         double cx = pos[0];
         double cy = pos[1];
 

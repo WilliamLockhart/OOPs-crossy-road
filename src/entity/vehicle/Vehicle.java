@@ -25,11 +25,11 @@ public class Vehicle extends Entity{
 
         switch (direction) {
             case RIGHT:
-                sprite.moveSprite(dx, dy);
+                moveEntity(dx, dy);
                 break;
 
             case LEFT:
-                sprite.moveSprite(-dx, -dy);
+                moveEntity(-dx, -dy);
                 break;
         }
 }

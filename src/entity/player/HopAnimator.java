@@ -1,10 +1,11 @@
 package entity.player;
 
+import entity.Entity;
 import sprite.Sprite;
 
 public class HopAnimator {
 
-    private final Sprite sprite;
+    private final Entity entity;
 
     private boolean isHopping = false;
     private double hopTimer = 0.0;
@@ -17,7 +18,7 @@ public class HopAnimator {
     private static final double JUMP_HEIGHT = 16;    // pixels
 
 
-    public HopAnimator(Sprite sprite) {this.sprite = sprite;}
+    public HopAnimator(Entity entity) {this.entity = entity;}
 
     public boolean isHopping() { return isHopping;}
 
@@ -25,7 +26,7 @@ public class HopAnimator {
         //calculates the end position for the sprite, and set timer to 0
         if (dirX == 0 && dirY == 0) return; //not WASD
 
-        double[] pos = sprite.getEntityPosition();
+        double[] pos = entity.getSprite().getPosition();
         startX = pos[0]; startY = pos[1];
 
         targetX = startX + dirX * HOP_DISTANCE;
@@ -45,10 +46,10 @@ public class HopAnimator {
         double xPosition = startX + (targetX - startX) * timeInHop;
         double baseY = startY + (targetY - startY) * timeInHop;
         double arcOffset = -JUMP_HEIGHT * Math.sin(Math.PI * timeInHop); //  follow sin to get the height of the bounce and add curve 
-        sprite.setPostion(xPosition, baseY + arcOffset);
+        entity.setEntityPostion(xPosition, baseY + arcOffset);
 
         if (timeInHop == 1.0) {
-            sprite.setPostion(targetX, targetY);
+            entity.setEntityPostion(targetX, targetY);
             isHopping = false; 
         }
 }

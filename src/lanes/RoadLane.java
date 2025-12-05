@@ -60,7 +60,7 @@ public class RoadLane extends Lane {
     @Override
     public boolean hitAVehicle(HitBox playerHitBox) {
         for (Vehicle v : activeVehicles) {
-            HitBox vehicleHitBox = v.getSprite().getHitBox();
+            HitBox vehicleHitBox = v.getHitBox();
             if (playerHitBox.checkCollision(vehicleHitBox))
                 return true;
         }
@@ -95,7 +95,7 @@ public class RoadLane extends Lane {
     }
 
     private boolean checkVehicleOffRoad(Vehicle vehicle) {
-        double[] vehiclePos = vehicle.getSprite().getEntityPosition();
+        double[] vehiclePos = vehicle.getSprite().getPosition();
         double[] exitPos = getExitPosition();
         double[] laneDir = getLaneDirectionUnitVector();
 

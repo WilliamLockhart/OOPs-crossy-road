@@ -33,7 +33,7 @@ public class GameManager {
     }
 
     boolean playerHitAVehicle() {
-        HitBox playerHitBox = player.getSprite().getHitBox();
+        HitBox playerHitBox = player.getHitBox();
         for(Lane lane : lanes)
             if(lane.intersects(playerHitBox))
                 if(lane.hitAVehicle(playerHitBox))
