@@ -1,14 +1,12 @@
 package sprite;
 import javafx.scene.image.Image;
-
+import sprite.HitBox.*;
 public class Sprite {
-    private String entityName;
     private Image entityIMG;
     private Position position;
     private HitBox hitBox;
 
-    public Sprite(String entityName, Image image, Position position){
-        this.entityName = entityName;
+    public Sprite(Image image, Position position){
         this.entityIMG = image;
         this.position = position;
         this.hitBox = null;
@@ -46,8 +44,6 @@ public class Sprite {
     public double[] getDimensions(){return position.getDimensions();}
 
     public Image getSpriteImage(){ return entityIMG; }
-
-    public String getEntityName(){ return entityName; }
 
     public HitBox getHitBox(){return hitBox;}
 

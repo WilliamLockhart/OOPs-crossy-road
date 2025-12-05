@@ -3,6 +3,7 @@ package entity.player;
 import entity.player.OrientationAnimator.PlayerOrientation;
 import javafx.scene.input.KeyCode;
 import sprite.*;
+import sprite.HitBox.PlayerHitBox;
 import entity.Entity;
 
 public class Player extends Entity{

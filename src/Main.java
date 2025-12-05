@@ -38,7 +38,7 @@ public class Main extends Application {
 
         //input handling and game logic
         input = new Input(windowManager.getWindowSceneObject().getScene());
-        gameManager = new GameManager(new Player(SpriteFactory.generateSprite("Player", "duck.png", 100, 100, 50, 50)));
+        gameManager = new GameManager(new Player(SpriteFactory.generateSprite("duck.png", 100, 100, 50, 50)));
         gameLoop();
     }
 

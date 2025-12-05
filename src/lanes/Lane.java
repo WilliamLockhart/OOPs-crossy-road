@@ -3,7 +3,7 @@ package lanes;
 import sprite.Sprite;
 import sprite.SpriteFactory;
 import window.WindowManager;
-import sprite.HitBox;
+import sprite.HitBox.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public abstract class Lane {
         hitBox.setHitBoxPosition(x, y);
 
         laneSprite = SpriteFactory.generateSprite(
-            "lane_" + index, fileName,
+            fileName,
             x, y,
             LANE_WIDTH, LANE_HEIGHT
         );
@@ -37,6 +37,7 @@ public abstract class Lane {
 
     public abstract void update(double dt);
 
+    //getters
     public List<Sprite> getLaneSprites() {
         List<Sprite> sprites = new ArrayList<>();
         sprites.add(laneSprite);
@@ -45,6 +46,7 @@ public abstract class Lane {
 
     public double[] getCenterPosition() { return laneSprite.getEntityPosition();}
 
+    //conditional checks
     public boolean hitAVehicle(HitBox playerHitBox){
         return false; //default
     }

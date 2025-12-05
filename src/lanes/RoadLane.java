@@ -4,21 +4,21 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-import sprite.HitBox;
+import sprite.HitBox.*;
 import sprite.Sprite;
 import entity.vehicle.*;
 import entity.vehicle.Vehicle.Direction;
 
 public class RoadLane extends Lane {
     private static final String fileName = "road.png";
-    private final double vehicleSpeed;
-    private final Direction roadDirection;
-    private final Random random = new Random();
-    List<Vehicle> activeVehicles;
-
     private static final double MIN_INTERVAL = 5.0;
     private static final double MAX_INTERVAL = 8.0;
 
+    private final double vehicleSpeed;
+    private final Direction roadDirection;
+    private final Random random = new Random();
+    
+    List<Vehicle> activeVehicles;
     private double spawnTimer;
 
     public RoadLane(int index) {

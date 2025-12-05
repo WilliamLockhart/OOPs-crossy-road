@@ -5,15 +5,14 @@ import graphics.Assets;
 
 public class SpriteFactory {
 
-    public static Sprite generateSprite(String entityName,
-                                        String imageFilename,
+    public static Sprite generateSprite(String imageFilename,
                                         double x, double y,
                                         double w, double h) {
 
         Position position = new Position(x, y, w, h);
         Image spriteImage;
 
-        // Use cached images
+        // Use cached images or memory runs out :(
         switch (imageFilename) {
             case "Red_Truck.png":
                 spriteImage = Assets.getInstance().getTruckRight();
@@ -37,6 +36,6 @@ public class SpriteFactory {
                 break;
         }
 
-        return new Sprite(entityName, spriteImage, position);
+        return new Sprite(spriteImage, position);
     }
 }

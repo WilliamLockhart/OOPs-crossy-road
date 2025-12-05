@@ -1,11 +1,11 @@
-package sprite;
+package sprite.HitBox;
 
-public class CarHitBox extends HitBox {
+public class PlayerHitBox extends HitBox{
     private final double spriteHeight;
 
-    public CarHitBox(double w, double spriteHeight, double angleDeg) {
+    public PlayerHitBox(double w, double spriteHeight, double angleDeg) {
         // hitbox is half as tall as the sprite
-        super(w, spriteHeight, angleDeg);
+        super(w, spriteHeight / 1.8, angleDeg);
         this.spriteHeight = spriteHeight;
     }
 
@@ -15,7 +15,7 @@ public class CarHitBox extends HitBox {
         double hb = rectangle.getHeight();
         double topLeftX = centerX - w / 2.0;
         double topLeftY = centerY - hb / 2.0;
-        double offsetY = spriteHeight *.1;
+        double offsetY = spriteHeight * 0.2;
 
         rectangle.setX(topLeftX);
         rectangle.setY(topLeftY + offsetY);

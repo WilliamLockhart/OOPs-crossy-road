@@ -1,6 +1,7 @@
 package entity.vehicle;
 
 import sprite.*;
+import sprite.HitBox.*;
 import entity.Behavior.*;
 
 public class VehicleFactory {
@@ -20,7 +21,6 @@ public class VehicleFactory {
 
     public static Vehicle generateCar(Vehicle.Direction dir) {
         Vehicle car = createVehicle(
-            "car",
             chooseFilename(dir, LEFT_CAR_FILE, RIGHT_CAR_FILE),
             CAR_W, CAR_H,
             new CarBehavior(),
@@ -34,7 +34,6 @@ public class VehicleFactory {
 
     public static Vehicle generateTruck(Vehicle.Direction dir) {
         Vehicle truck = createVehicle(
-            "truck",
             chooseFilename(dir, LEFT_TRUCK_FILE, RIGHT_TRUCK_FILE),
             TRUCK_W, TRUCK_H,
             new TruckBehavior(),
@@ -48,7 +47,6 @@ public class VehicleFactory {
 
     // Helper functions
     private static Vehicle createVehicle(
-            String name,
             String filename,
             double w,
             double h,
@@ -56,7 +54,6 @@ public class VehicleFactory {
             Vehicle.Direction dir
     ) {
         Sprite sprite = SpriteFactory.generateSprite(
-            name,
             filename,
             DEFAULT_X, DEFAULT_Y,
             w, h
