@@ -8,7 +8,7 @@ import sprite.HitBox;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.Vehicle;
+import entity.vehicle.*;;
 
 public abstract class Lane {
 

@@ -1,4 +1,4 @@
-package player;
+package entity.player;
 
 import sprite.Sprite;
 

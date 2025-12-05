@@ -1,12 +1,11 @@
-package player;
+package entity.player;
 
+import entity.player.OrientationAnimator.PlayerOrientation;
 import javafx.scene.input.KeyCode;
-import player.OrientationAnimator.PlayerOrientation;
-import sprite.PlayerHitBox;
-import sprite.Sprite;
+import sprite.*;
+import entity.Entity;
 
-public class Player {
-    private final Sprite sprite;
+public class Player extends Entity{
     private final OrientationAnimator orientationAnimator;
     private PlayerOrientation orientation;
     private final HopAnimator hopAnimator;
@@ -31,6 +30,8 @@ public class Player {
         this.orientation = orientation;
         sprite.setSpriteImage(orientationAnimator.getImage(orientation));
     }
+
+    public void update(double dt){} //player needs input to update, so this wont do anything
 
     public void update(double dt, Input input) {
         if (!hopAnimator.isHopping()) 
@@ -67,9 +68,6 @@ public class Player {
 
         return new DirectionInput(directionX, directionY, newOrientation);
     }
-
-    public Sprite getSprite() {
-        return sprite; }
 
     // helper class for direction and orientation
     private static class DirectionInput {

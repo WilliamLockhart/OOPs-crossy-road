@@ -4,12 +4,10 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.VehicleFactory;
 import sprite.HitBox;
 import sprite.Sprite;
-import entity.Vehicle.Direction;
-import entity.Vehicle;
-
+import entity.vehicle.*;
+import entity.vehicle.Vehicle.Direction;
 
 public class RoadLane extends Lane {
     private static final String fileName = "road.png";
@@ -20,7 +18,6 @@ public class RoadLane extends Lane {
 
     private static final double MIN_INTERVAL = 5.0;
     private static final double MAX_INTERVAL = 8.0;
-    
 
     private double spawnTimer;
 

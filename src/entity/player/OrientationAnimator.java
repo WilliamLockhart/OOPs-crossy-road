@@ -1,4 +1,4 @@
-package player;
+package entity.player;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;

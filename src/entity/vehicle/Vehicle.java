@@ -1,6 +1,7 @@
-package entity;
+package entity.vehicle;
 import sprite.Sprite;
 import entity.Behavior.*;
+import entity.Entity;
 
 public class Vehicle extends Entity{
     public enum Direction{

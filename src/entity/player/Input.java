@@ -1,4 +1,4 @@
-package player;
+package entity.player;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;

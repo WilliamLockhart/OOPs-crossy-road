@@ -1,4 +1,4 @@
-package entity;
+package entity.vehicle;
 
 import sprite.*;
 import entity.Behavior.*;

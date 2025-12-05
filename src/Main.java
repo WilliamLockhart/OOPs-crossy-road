@@ -9,11 +9,12 @@ import javafx.scene.Node;
 import javafx.stage.Stage;
 
 import javafx.scene.paint.Color;
-import player.Player;
 import sprite.SpriteFactory;
-import player.Input;
 import gameManager.*;
 import java.util.List;
+
+import entity.player.Input;
+import entity.player.Player;
 import sprite.Sprite;
 
 public class Main extends Application {

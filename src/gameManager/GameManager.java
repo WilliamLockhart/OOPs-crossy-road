@@ -1,11 +1,12 @@
 package gameManager;
 
 import lanes.*;
-import player.*;
 import sprite.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import entity.player.*;
 
 public class GameManager {
     private Player player;
