@@ -29,9 +29,10 @@ public class RoadLane extends Lane {
         activeVehicles = new ArrayList<>();
         this.vehicleSpeed = 60.0;
 
-        this.roadDirection = (random.nextBoolean())
-                ? Direction.LEFT
-                : Direction.RIGHT;
+        if (random.nextBoolean()) 
+            this.roadDirection = Direction.LEFT;
+        else 
+            this.roadDirection = Direction.RIGHT;
         this.spawnTimer = randomInterval();
     }
 
@@ -63,9 +64,8 @@ public class RoadLane extends Lane {
     public boolean hitAVehicle(HitBox playerHitBox) {
         for (Vehicle v : activeVehicles) {
             HitBox vehicleHitBox = v.getSprite().getHitBox();
-            if (playerHitBox.checkCollision(vehicleHitBox)) {
+            if (playerHitBox.checkCollision(vehicleHitBox))
                 return true;
-            }
         }
         return false;
     }
@@ -74,7 +74,6 @@ public class RoadLane extends Lane {
     //helper functions
 
     private double randomInterval() {
-        // random in range [MIN_INTERVAL, MAX_INTERVAL]
         return MIN_INTERVAL + random.nextDouble() * (MAX_INTERVAL - MIN_INTERVAL);
     }
 
@@ -99,39 +98,52 @@ public class RoadLane extends Lane {
     }
 
     private boolean checkVehicleOffRoad(Vehicle vehicle) {
-        double[] vPos = vehicle.getSprite().getEntityPosition();
-        double vx = vPos[0];
-        double vy = vPos[1];
+        double[] vehiclePos = vehicle.getSprite().getEntityPosition();
+        double[] exitPos = getExitPosition();
+        double[] laneDir = getLaneDirectionUnitVector();
 
-        // Exit edge is opposite of travel direction
-        Direction exitDir = (roadDirection == Direction.LEFT)
-                ? Direction.RIGHT
-                : Direction.LEFT;
-        double[] exitPos = getLanePositionForCarTravellingInDirection(exitDir);
+        double along = signedDistanceAlongLane(vehiclePos, exitPos, laneDir);
+        double margin = vehicle.getSprite().getDimensions()[0] / 2.0;
+        return isBeyondExit(along, margin);
+    }
+
+    private double[] getExitPosition() {
+        Direction exitDir;
+        if (roadDirection == Direction.LEFT) 
+            exitDir = Direction.RIGHT;
+        else 
+            exitDir = Direction.LEFT;
+        return getLanePositionForCarTravellingInDirection(exitDir);
+    }
+
+    private double[] getLaneDirectionUnitVector() {
+        double angleRad = Math.toRadians(laneSprite.getRotationDeg());
+        double dirX = Math.cos(angleRad);
+        double dirY = Math.sin(angleRad);
+        return new double[]{dirX, dirY};
+    }
+
+    private double signedDistanceAlongLane(double[] vehiclePos,double[] exitPos,double[] laneDir) {
+        double vx = vehiclePos[0];
+        double vy = vehiclePos[1];
         double ex = exitPos[0];
         double ey = exitPos[1];
 
-        // Vector from exit point to vehicle
         double dx = vx - ex;
         double dy = vy - ey;
 
-        // Lane direction unit vector (RIGHT along the lane)
-        double angle = Math.toRadians(laneSprite.getRotationDeg());
-        double dirX = Math.cos(angle);
-        double dirY = Math.sin(angle);
+        double dirX = laneDir[0];
+        double dirY = laneDir[1];
 
-        // Signed distance along lane axis
-        double along = dx * dirX + dy * dirY;
+        return dx * dirX + dy * dirY;
+    }
 
-        double margin = vehicle.getSprite().getDimensions()[0] / 2.0;
-
-        if (roadDirection == Direction.RIGHT) {
-            // moving in +lane direction; off once we are margin past the exit
+    private boolean isBeyondExit(double along, double margin) {
+        if (roadDirection == Direction.RIGHT)
             return along > margin;
-        } else {
-            // moving in -lane direction; off once we are margin before the exit
+        else 
             return along < -margin;
-        }
+        
     }
 
 }

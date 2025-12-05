@@ -24,7 +24,6 @@ public class GameManager {
         updateLanes(dt);
         player.update(dt, input);
 
-        // collision check
         if (playerHitAVehicle()) {
             tempCounter++;
             System.out.printf("Bang! Count = %d%n", tempCounter);

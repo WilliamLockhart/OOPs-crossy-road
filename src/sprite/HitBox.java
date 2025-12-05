@@ -15,7 +15,6 @@ public class HitBox {
         double w = rectangle.getWidth();
         double h = rectangle.getHeight();
 
-        // center on (centerX, centerY)
         rectangle.setX(centerX - w / 2.0);
         rectangle.setY(centerY - h / 2.0);
     }

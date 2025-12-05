@@ -19,10 +19,13 @@ public class VehicleFactory {
 
 
     public static Vehicle generateCar(Vehicle.Direction dir) {
-        Vehicle car =  createVehicle(
-            "car", chooseFilename(dir, LEFT_CAR_FILE, RIGHT_CAR_FILE),
+        Vehicle car = createVehicle(
+            "car",
+            chooseFilename(dir, LEFT_CAR_FILE, RIGHT_CAR_FILE),
             CAR_W, CAR_H,
-            new CarBehavior(),dir);
+            new CarBehavior(),
+            dir
+        );
 
         Sprite carSprite = car.getSprite();
         carSprite.setHitBox(createHitBox(CAR_W, CAR_H, car.getAngleRad(), false));
@@ -31,40 +34,52 @@ public class VehicleFactory {
 
     public static Vehicle generateTruck(Vehicle.Direction dir) {
         Vehicle truck = createVehicle(
-            "truck", chooseFilename(dir, LEFT_TRUCK_FILE, RIGHT_TRUCK_FILE),
+            "truck",
+            chooseFilename(dir, LEFT_TRUCK_FILE, RIGHT_TRUCK_FILE),
             TRUCK_W, TRUCK_H,
-            new TruckBehavior(), dir);
-
+            new TruckBehavior(),
+            dir
+        );
 
         Sprite truckSprite = truck.getSprite();
         truckSprite.setHitBox(createHitBox(TRUCK_W, TRUCK_H, truck.getAngleRad(), true));
-
         return truck;
     }
 
+    // Helper functions
+    private static Vehicle createVehicle(
+            String name,
+            String filename,
+            double w,
+            double h,
+            Behavior behavior,
+            Vehicle.Direction dir
+    ) {
+        Sprite sprite = SpriteFactory.generateSprite(
+            name,
+            filename,
+            DEFAULT_X, DEFAULT_Y,
+            w, h
+        );
 
-    //Helper functions 
-    private static Vehicle createVehicle(String name, String filename, double w, double h, Behavior behavior, Vehicle.Direction dir) {
-        Sprite sprite = SpriteFactory.generateSprite(name, filename, DEFAULT_X, DEFAULT_Y, w, h);
-        Vehicle vehicle = new Vehicle(sprite, behavior);
-        vehicle.setDirection(dir);
-        return vehicle;
+        return new VehicleBuilder()
+                .sprite(sprite)
+                .behavior(behavior)
+                .direction(dir)
+                .build();
     }
 
     private static String chooseFilename(Vehicle.Direction dir, String left, String right) {
-        if(dir == Vehicle.Direction.LEFT)
-            return left;
-        return right;
+        return (dir == Vehicle.Direction.LEFT) ? left : right;
     }
 
     private static HitBox createHitBox(double w, double h, double angleRad, boolean truck) {
         double angleDeg = Math.toDegrees(angleRad);
 
         if (truck) {
-            return new TruckHitBox(w, h/2, angleDeg);
+            return new TruckHitBox(w, h / 2, angleDeg);
         } else {
-            return new CarHitBox(w, h/2, angleDeg);
+            return new CarHitBox(w, h / 2, angleDeg);
         }
     }
-
 }

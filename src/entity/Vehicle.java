@@ -12,9 +12,9 @@ public class Vehicle extends Entity{
     private Direction direction;
     static final private double ANGLE_RAD = Math.toRadians(20.0);
     public Vehicle(Sprite sprite, Behavior behavior) {this.sprite = sprite; this.behavior = behavior;}
-
     public void setSpeed(double speed){this.speed = speed;}
     public void setDirection(Direction direction){this.direction = direction;}
+    
     public void update(double dt) {
         if (direction == null) return;
 

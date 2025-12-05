@@ -16,24 +16,24 @@ public class SpriteFactory {
         // Use cached images
         switch (imageFilename) {
             case "Red_Truck.png":
-                spriteImage = Assets.TRUCK_RIGHT_IMG;
+                spriteImage = Assets.getInstance().getTruckRight();
                 break;
 
             case "Green_Truck.png":
-                spriteImage = Assets.TRUCK_LEFT_IMG;
+                spriteImage = Assets.getInstance().getTruckLeft();
                 break;
 
             case "Purple_car.png":
-                spriteImage = Assets.CAR_RIGHT_IMG;
+                spriteImage = Assets.getInstance().getCarRight();
                 break;
 
             case "Orange_car.png":
-                spriteImage = Assets.CAR_LEFT_IMG;
+                spriteImage = Assets.getInstance().getCarLeft();
                 break;
 
             default:
                 // fallback: load normally (non-cached)
-                spriteImage = Assets.loadImage(imageFilename);
+                spriteImage = Assets.getInstance().loadImage(imageFilename);
                 break;
         }
 

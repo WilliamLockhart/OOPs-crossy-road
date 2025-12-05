@@ -27,7 +27,7 @@ public class OrientationAnimator {
         int forwardLeftX = 113, forwardLeftY = 149, forwardLeftW = 14, forwardLeftH = 17;  
         int backLeftX = 81,  backLeftY = 149, backLeftW = 13, backLeftH = 17; 
 
-        Image sheet = Assets.loadImage("Character.png");
+        Image sheet = Assets.getInstance().loadImage("Character.png");
         PixelReader reader = sheet.getPixelReader();
 
         forwardRight_IMG = new WritableImage(reader, forwardRightX, forwardRightY, forwardRightW, forwardRightH);

@@ -4,3 +4,5 @@
 * observer: used in entity/behavior/ for play sound
 * factory: used throughout, inside entity/ sprite/
 * strategy pattern: in entity/behavior with the use of car/truck behavior inside of vehicle
+* singelton in graphics/Assets.java
+* builder pattern in entity/vehicleBuilder.java used in

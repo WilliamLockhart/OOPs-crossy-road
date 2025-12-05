@@ -12,8 +12,8 @@ import entity.Vehicle;
 
 public abstract class Lane {
 
-    private static final double LANE_WIDTH  = 1800.0; // length along the road
-    private static final double LANE_HEIGHT = 100.0;  // lane thickness (spacing)
+    private static final double LANE_WIDTH  = 1800.0;
+    private static final double LANE_HEIGHT = 100.0;
     private static final double LANE_ANGLE = 20.0;
     private static final double LANE_ANGLE_RAD = Math.toRadians(LANE_ANGLE);
 
@@ -43,9 +43,7 @@ public abstract class Lane {
         return sprites;
     }
 
-    public double[] getCenterPosition() {
-        return laneSprite.getEntityPosition();
-    }
+    public double[] getCenterPosition() { return laneSprite.getEntityPosition();}
 
     public boolean hitAVehicle(HitBox playerHitBox){
         return false; //default
@@ -80,7 +78,6 @@ public abstract class Lane {
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
 
-        // --- Compute all 4 corners of the rotated rectangle ---
         // Top-left
         double tlx = cx + (-halfW * cos - -halfH * sin);
         double tly = cy + (-halfW * sin + -halfH * cos);
@@ -97,18 +94,15 @@ public abstract class Lane {
         double brx = cx + (halfW * cos - halfH * sin);
         double bry = cy + (halfW * sin + halfH * cos);
 
-        // --- Pick which edge to spawn on ---
         double px, py;
 
         switch (carDirection) {
             case LEFT:
-                // RIGHT edge (midpoint between TR and BR)
                 px = (trx + brx) / 2.0;
                 py = (try_ + bry) / 2.0;
                 break;
 
             case RIGHT:
-                // LEFT edge (midpoint between TL and BL)
                 px = (tlx + blx) / 2.0;
                 py = (tly + bly) / 2.0;
                 break;

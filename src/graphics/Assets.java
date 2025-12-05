@@ -4,27 +4,30 @@ import javafx.scene.image.Image;
 
 public class Assets {
 
-    // All images are loaded from a folder named "assets" in the project root.
     private static final String BASE = "file:assets/";
+    private static final Assets INSTANCE = new Assets();
 
-    public static final Image TRUCK_RIGHT_IMG =
-        new Image(BASE + "Red_Truck.png");
+    private final Image truckRightImg;
+    private final Image truckLeftImg;
+    private final Image carLeftImg;
+    private final Image carRightImg;
 
-    public static final Image TRUCK_LEFT_IMG =
-        new Image(BASE + "Green_Truck.png");
-
-    public static final Image CAR_LEFT_IMG =
-        new Image(BASE + "Orange_car.png");
-
-    public static final Image CAR_RIGHT_IMG =
-        new Image(BASE + "Purple_car.png");
-
-    // Fallback loaders for anything else
-    public static Image loadImage(String fileName) {
-        return new Image(BASE + fileName);
+    private Assets() {
+        this.truckRightImg = new Image(BASE + "Red_Truck.png");
+        this.truckLeftImg  = new Image(BASE + "Green_Truck.png");
+        this.carLeftImg    = new Image(BASE + "Orange_car.png");
+        this.carRightImg   = new Image(BASE + "Purple_car.png");
     }
 
-    public static Image loadImage(String fileName, double width, double height) {
-        return new Image(BASE + fileName, width, height, false, false);
-    }
+    public static Assets getInstance() {return INSTANCE;}
+
+    public Image getTruckRight() { return truckRightImg; }
+    public Image getTruckLeft()  { return truckLeftImg; }
+    public Image getCarLeft()    { return carLeftImg; }
+    public Image getCarRight()   { return carRightImg; }
+
+    public Image loadImage(String fileName) {return new Image(BASE + fileName);}
+
+    public Image loadImage(String fileName, double width, double height) {
+        return new Image(BASE + fileName, width, height, false, false);}
 }
