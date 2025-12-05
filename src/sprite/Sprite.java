@@ -1,15 +1,13 @@
 package sprite;
 import javafx.scene.image.Image;
-import sprite.HitBox.*;
+
 public class Sprite {
     private Image entityIMG;
     private Position position;
-    private HitBox hitBox;
 
     public Sprite(Image image, Position position){
         this.entityIMG = image;
         this.position = position;
-        this.hitBox = null;
     }
 
     public void setSpriteImage(Image img){

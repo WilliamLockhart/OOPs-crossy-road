@@ -22,7 +22,7 @@ public class Player extends Entity{
         this.orientationAnimator = new OrientationAnimator();
         this.orientation = PlayerOrientation.FORWARD_RIGHT;
         this.sprite.setSpriteImage(orientationAnimator.getImage(orientation));
-        this.hopAnimator = new HopAnimator(this);
+        this.hopAnimator = new HopAnimator(sprite);
     }
 
     private void setOrientation(PlayerOrientation orientation) {
@@ -37,8 +37,11 @@ public class Player extends Entity{
     public void update(double dt, Input input) {
         if (!hopAnimator.isHopping()) 
             handleIdle(input);
-         else 
+         else {
             hopAnimator.update(dt);
+            double[] pos = sprite.getPosition();
+            setEntityPostion(pos[0], pos[1]);    
+        }
     }
 
     private void handleIdle(Input input) {
