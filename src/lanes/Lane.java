@@ -3,8 +3,10 @@ package lanes;
 import sprite.Sprite;
 import sprite.SpriteFactory;
 import window.WindowManager;
+import sprite.HitBox;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import entity.Vehicle;
 
@@ -12,30 +14,45 @@ public abstract class Lane {
 
     private static final double LANE_WIDTH  = 1800.0; // length along the road
     private static final double LANE_HEIGHT = 100.0;  // lane thickness (spacing)
-
     private static final double LANE_ANGLE = 20.0;
     private static final double LANE_ANGLE_RAD = Math.toRadians(LANE_ANGLE);
 
-    protected Sprite sprite;
+    protected Sprite laneSprite;
 
     public Lane(int index, String fileName) {
         double x = generateXPos(index);
         double y = generateYPos(index);
 
-        sprite = SpriteFactory.generateSprite(
+        HitBox hitBox = new HitBox(LANE_WIDTH, LANE_HEIGHT, LANE_ANGLE);
+        hitBox.setHitBoxPosition(x, y);
+
+        laneSprite = SpriteFactory.generateSprite(
             "lane_" + index, fileName,
             x, y,
             LANE_WIDTH, LANE_HEIGHT
         );
-
-        sprite.setRotationDeg(LANE_ANGLE);
+        laneSprite.setHitBox(hitBox);
+        laneSprite.setRotationDeg(LANE_ANGLE);
     }
 
-    public abstract Vehicle update(double dt);
+    public abstract void update(double dt);
 
-    public Sprite getSprite() {
-        return sprite;
+    public List<Sprite> getLaneSprites() {
+        List<Sprite> sprites = new ArrayList<>();
+        sprites.add(laneSprite);
+        return sprites;
     }
+
+    public double[] getCenterPosition() {
+        return laneSprite.getEntityPosition();
+    }
+
+    public boolean hitAVehicle(HitBox playerHitBox){
+        return false; //default
+    }
+
+    public boolean intersects(HitBox hb) {return laneSprite.getHitBox().checkCollision(hb);}
+
 
     // helper functions
     private double generateXPos(int index) {
@@ -52,14 +69,14 @@ public abstract class Lane {
 
     protected double[] getLanePositionForCarTravellingInDirection(Vehicle.Direction carDirection) {
         // Sprite center & dimensions
-        double[] pos = sprite.getEntityPosition(); // [centerX, centerY]
+        double[] pos = laneSprite.getEntityPosition(); // [centerX, centerY]
         double cx = pos[0];
         double cy = pos[1];
 
         double halfW = LANE_WIDTH  / 2.0;
         double halfH = LANE_HEIGHT / 2.0;
 
-        double angle = Math.toRadians(sprite.getRotationDeg());
+        double angle = Math.toRadians(laneSprite.getRotationDeg());
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
 

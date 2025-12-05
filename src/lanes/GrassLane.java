@@ -1,7 +1,5 @@
 package lanes;
 
-import entity.Vehicle;
-
 public class GrassLane extends Lane{
     private static final String fileName = "grass.png";
 
@@ -10,8 +8,7 @@ public class GrassLane extends Lane{
     }
 
     @Override 
-    public Vehicle update(double dt){
+    public void update(double dt){
         //grass lanes are safe zones nothing happens here
-        return null;
     }
 }

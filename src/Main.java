@@ -1,10 +1,14 @@
 import window.WindowManager;
 
 import graphics.ImageRenderer;
+import graphics.TextRenderer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.stage.Stage;
 
+import javafx.scene.paint.Color;
 import player.Player;
 import sprite.SpriteFactory;
 import player.Input;
@@ -13,10 +17,11 @@ import java.util.List;
 import sprite.Sprite;
 
 public class Main extends Application {
-    private static final boolean DISPLAY_HITBOXES = true;
+    private static final boolean DISPLAY_HITBOXES = false;
 
     private WindowManager windowManager;
     private ImageRenderer imageRenderer;
+    private TextRenderer textRenderer;
     private GameManager gameManager;
     private Input input;
 
@@ -25,7 +30,10 @@ public class Main extends Application {
         //creates the stuff for the window and rendering
         windowManager = new WindowManager();
         windowManager.start(stage);
-        imageRenderer = new ImageRenderer(windowManager.getWindowSceneObject().getRootPane().getChildren());
+
+        ObservableList<Node> children = windowManager.getWindowSceneObject().getRootPane().getChildren();
+        imageRenderer = new ImageRenderer(children);
+        textRenderer = new TextRenderer(children);
 
         //input handling and game logic
         input = new Input(windowManager.getWindowSceneObject().getScene());
@@ -63,6 +71,13 @@ public class Main extends Application {
                     //takes user inputs and deals with game decisions based on them
                     gameManager.update(delta, input);
                     remderGame();
+
+                    if (gameManager.gameOver()) {
+                        textRenderer.drawText("GAME OVER", 400, 400, 48, Color.RED);
+                        this.stop();
+                    }
+
+
                 }
             }
         }.start();

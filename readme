@@ -1,6 +1,6 @@
 # OOPs Crossy Road
  
 # Patterns
-* observer
-* factory
-* 
+* observer: used in entity/behavior/ for play sound
+* factory: used throughout, inside entity/ sprite/
+* strategy pattern: in entity/behavior with the use of car/truck behavior inside of vehicle
