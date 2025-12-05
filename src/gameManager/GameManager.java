@@ -1,5 +1,6 @@
 package gameManager;
 
+import lanes.*;
 import entity.*;
 import entity.Vehicle.*;
 import player.*;
@@ -13,15 +14,21 @@ public class GameManager {
     private Player player;
     private boolean gameOver;
     int tempCounter = 0;
+    private List<Lane> lanes;
 
     public GameManager(Player player){
         gameOver = false;
         this.player = player;
         activeVehicles = new ArrayList<>();
+        lanes = new ArrayList<>();
         Vehicle truck = (VehicleFactory.generateTruck(Direction.RIGHT));
         truck.getSprite().setPostion(0, 0);
         truck.setSpeed(10);
         activeVehicles.add(truck);
+
+
+        generateLanes(12);
+
     }
 
     public void update(double dt, Input input){
@@ -56,10 +63,27 @@ public class GameManager {
 
         //ORDER MATTERS, first things added will be rendered first tf, will be on bottom!!
         //TODO return list based on INDEX of ROAD inverted i.e further roads rendered first so earlier items will render on top of further ones!
+
+        for(Lane lane : lanes)
+            sprites.add(lane.getSprite());
+
         for(Vehicle vehicle : activeVehicles){
             sprites.add(vehicle.getSprite()); }
 
         sprites.add(player.getSprite());
         return sprites;
+    }
+
+
+
+    void generateLanes(int numberOfLanes){
+        for(int i =0; i < numberOfLanes; i++){
+            if(i%2 == 0){
+                lanes.add(new RoadLane(i));
+            }
+            else{
+                lanes.add(new GrassLane(i));
+            }
+        }
     }
 }

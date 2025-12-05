@@ -15,7 +15,10 @@ public class Sprite {
     }
 
     //setters
-    public void setHitBox(HitBox hitBox){this.hitBox = hitBox;}
+    public void setHitBox(HitBox hitBox){
+        this.hitBox = hitBox;
+        updateHitbox();
+    }
 
     public void setSpriteImage(Image img){
         if(img == null)
@@ -32,10 +35,13 @@ public class Sprite {
         this.position.updatePostion(x, y); 
         updateHitbox();
     }
-
+    
+    public void setRotationDeg(double angleDeg) {position.setRotationDeg(angleDeg);}
 
     //getters
     public double[] getEntityPosition(){ return position.getCenterPosition();}
+
+    public double getRotationDeg() { return position.getRotationDeg();}
 
     public double[] getDimensions(){return position.getDimensions();}
 

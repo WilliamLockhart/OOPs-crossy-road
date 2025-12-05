@@ -28,25 +28,28 @@ public class ImageRenderer {
         double x = centerX - (width / 2);
         double y = centerY - (height / 2);
 
-        drawImageAt(sprite.getSpriteImage(), x, y, width, height);
+        drawImageAt(sprite.getSpriteImage(), x, y, width, height, sprite.getRotationDeg());
     }
 
     public void drawHitbox(HitBox hitBox){
+        if (hitBox == null) { return;}
+
         Rectangle rect = hitBox.getRectangle();
-        if(rect == null)
-            return;
-        
+        if (rect == null) { return;}
+
         rect.setFill(Color.color(1, 0, 0, 0.4));
-        rect.setStroke(Color.RED);              
+        rect.setStroke(Color.RED);
         children.add(rect);
     }
 
-    private void drawImageAt(Image img, double x, double y, double w, double h) {
+
+    private void drawImageAt(Image img, double x, double y, double w, double h, double deg) {
         if (img == null) return;
 
         Canvas canvas = new Canvas(w, h);
         canvas.getGraphicsContext2D().setImageSmoothing(false);
         canvas.getGraphicsContext2D().drawImage(img, 0, 0, w, h);
+        canvas.setRotate(deg);
         children.add(canvas);
         canvas.setLayoutX(x);
         canvas.setLayoutY(y);

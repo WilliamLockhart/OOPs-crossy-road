@@ -9,8 +9,8 @@ public class WindowManager extends Application {
     private Window window;
     private WindowScene windowScene;
 
-    private double WINDOW_WIDTH = 1280;
-    private double WINDOW_HEIGHT = 720;
+    public static final double WINDOW_WIDTH = 1280;
+     public static final double WINDOW_HEIGHT = 720;
 
     @Override
     public void start(Stage stage) {

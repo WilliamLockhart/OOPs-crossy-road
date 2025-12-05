@@ -26,7 +26,5 @@ public class HitBox {
         return !intersection.getBoundsInLocal().isEmpty();
     }
 
-    public Rectangle getRectangle() {
-        return rectangle;
-    }
+    public Rectangle getRectangle() {return rectangle;}
 }

@@ -20,10 +20,8 @@ if (os.isWindows()) {
     platform = 'linux'
 }
 
-// Your Main is in the default package: src/Main.java
 mainClassName = 'Main'
 
-// Use your existing src/ layout
 sourceSets {
     main {
         java {
@@ -38,10 +36,7 @@ dependencies {
     implementation "org.openjfx:javafx-graphics:${javafxVersion}:${platform}"
 }
 
-
-// Make the `run` task start JavaFX properly
 run {
-    // classpath already includes JavaFX jars; reuse it as module-path.
     jvmArgs = [
         "--module-path", classpath.asPath,
         "--add-modules", "javafx.controls,javafx.graphics"

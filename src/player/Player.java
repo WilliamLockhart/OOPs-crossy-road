@@ -18,7 +18,6 @@ public class Player {
         double[] dims = sprite.getDimensions();
         HitBox hitBox = new HitBox(dims[0], dims[1], 0);
         sprite.setHitBox(hitBox);
-
         //animation stuff
         this.orientationAnimator = new OrientationAnimator();
         this.orientation = PlayerOrientation.FORWARD_RIGHT;
