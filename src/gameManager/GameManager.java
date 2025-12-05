@@ -5,7 +5,8 @@ import sprite.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import sprite.HitBox.*;
+
+import entity.HitBox.*;
 import entity.player.*;
 
 public class GameManager {

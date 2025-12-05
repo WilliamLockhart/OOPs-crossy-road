@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-import sprite.HitBox.*;
 import sprite.Sprite;
+import entity.HitBox.*;
 import entity.vehicle.*;
 import entity.vehicle.Vehicle.Direction;
 

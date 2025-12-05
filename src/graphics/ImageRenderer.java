@@ -1,6 +1,6 @@
 package graphics;
-import sprite.HitBox.*;
 import sprite.Sprite;
+import entity.HitBox.*;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;

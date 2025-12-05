@@ -1,4 +1,4 @@
-package sprite.HitBox;
+package entity.HitBox;
 
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;

@@ -3,11 +3,11 @@ package lanes;
 import sprite.Sprite;
 import sprite.SpriteFactory;
 import window.WindowManager;
-import sprite.HitBox.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import entity.*;
+import entity.HitBox.*;
 import entity.vehicle.*;;
 
 public abstract class Lane extends Entity {

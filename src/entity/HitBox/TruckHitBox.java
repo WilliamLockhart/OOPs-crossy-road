@@ -1,4 +1,4 @@
-package sprite.HitBox;
+package entity.HitBox;
 
 public class TruckHitBox extends HitBox {
     private final double spriteHeight;

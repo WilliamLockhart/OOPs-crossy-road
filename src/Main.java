@@ -13,8 +13,7 @@ import sprite.SpriteFactory;
 import gameManager.*;
 import java.util.List;
 
-import entity.player.Input;
-import entity.player.Player;
+import entity.player.*;
 import sprite.Sprite;
 
 public class Main extends Application {

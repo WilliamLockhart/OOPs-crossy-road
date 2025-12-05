@@ -1,7 +1,7 @@
     package entity;
     import entity.Behavior.*;
-    import sprite.*;
-    import sprite.HitBox.HitBox;
+import entity.HitBox.HitBox;
+import sprite.*;
 
     public abstract class Entity {
         protected Sprite sprite;

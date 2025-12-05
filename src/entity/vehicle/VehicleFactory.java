@@ -1,8 +1,8 @@
 package entity.vehicle;
 
 import sprite.*;
-import sprite.HitBox.*;
 import entity.Behavior.*;
+import entity.HitBox.*;
 
 public class VehicleFactory {
 
