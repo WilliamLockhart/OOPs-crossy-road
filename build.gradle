@@ -1,0 +1,49 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+def javafxVersion = '21'
+
+// Detect OS for JavaFX natives
+def os = org.gradle.internal.os.OperatingSystem.current()
+def platform
+if (os.isWindows()) {
+    platform = 'win'
+} else if (os.isMacOsX()) {
+    platform = 'mac'
+} else if (os.isLinux()) {
+    platform = 'linux'
+} else {
+    platform = 'linux'
+}
+
+// Your Main is in the default package: src/Main.java
+mainClassName = 'Main'
+
+// Use your existing src/ layout
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
+dependencies {
+    implementation "org.openjfx:javafx-base:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:${platform}"
+}
+
+
+// Make the `run` task start JavaFX properly
+run {
+    // classpath already includes JavaFX jars; reuse it as module-path.
+    jvmArgs = [
+        "--module-path", classpath.asPath,
+        "--add-modules", "javafx.controls,javafx.graphics"
+    ]
+}

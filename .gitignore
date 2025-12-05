@@ -1,2 +1,11 @@
+# Build output
 out/
-lib/
+build/
+
+# Gradle cache
+.gradle/
+
+# IDE files
+.vscode/
+.idea/
+*.iml
