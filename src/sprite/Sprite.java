@@ -1,0 +1,56 @@
+package sprite;
+import javafx.scene.image.Image;
+
+public class Sprite {
+    private String entityName;
+    private Image entityIMG;
+    private Position position;
+    private HitBox hitBox;
+
+    public Sprite(String entityName, Image image, Position position){
+        this.entityName = entityName;
+        this.entityIMG = image;
+        this.position = position;
+        this.hitBox = null;
+    }
+
+    //setters
+    public void setHitBox(HitBox hitBox){this.hitBox = hitBox;}
+
+    public void setSpriteImage(Image img){
+        if(img == null)
+            return;
+        entityIMG = img;
+    }
+
+    public void setPostion(double x, double y){
+        position.setPostion(x, y);
+        updateHitbox();
+    }
+
+    public void moveSprite(double x, double y){
+        this.position.updatePostion(x, y); 
+        updateHitbox();
+    }
+
+
+    //getters
+    public double[] getEntityPosition(){ return position.getCenterPosition();}
+
+    public double[] getDimensions(){return position.getDimensions();}
+
+    public Image getSpriteImage(){ return entityIMG; }
+
+    public String getEntityName(){ return entityName; }
+
+    public HitBox getHitBox(){return hitBox;}
+
+    //helper functions
+    private void updateHitbox(){
+        if(hitBox == null)
+            return;
+
+        double[] pos = position.getCenterPosition();
+        hitBox.setHitBoxPosition(pos[0], pos[1]);
+    }
+}

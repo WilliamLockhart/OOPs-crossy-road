@@ -1,0 +1,16 @@
+# OOPs Crossy Road
+
+## Requirements
+
+- Java 17 (or whatever you’re using)
+- JavaFX SDK (matching version)
+
+## Setup
+
+1. Download JavaFX SDK from the official site.
+2. Extract it somewhere on your machine.
+3. Copy the `lib` folder from the JavaFX SDK into this project root, or update the `Makefile` to point to your JavaFX install.
+4. Run:
+
+   ```bash
+   make run
