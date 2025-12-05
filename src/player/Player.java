@@ -2,7 +2,7 @@ package player;
 
 import javafx.scene.input.KeyCode;
 import player.OrientationAnimator.PlayerOrientation;
-import sprite.HitBox;
+import sprite.PlayerHitBox;
 import sprite.Sprite;
 
 public class Player {
@@ -16,7 +16,7 @@ public class Player {
 
         //create player hitbox
         double[] dims = sprite.getDimensions();
-        HitBox hitBox = new HitBox(dims[0], dims[1], 0);
+        PlayerHitBox hitBox = new PlayerHitBox(dims[0], dims[1], 0);
         sprite.setHitBox(hitBox);
         //animation stuff
         this.orientationAnimator = new OrientationAnimator();

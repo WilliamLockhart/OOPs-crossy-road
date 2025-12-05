@@ -5,6 +5,7 @@ import entity.*;
 import entity.Vehicle.*;
 import player.*;
 import sprite.*;
+import window.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,18 +22,14 @@ public class GameManager {
         this.player = player;
         activeVehicles = new ArrayList<>();
         lanes = new ArrayList<>();
-        Vehicle truck = (VehicleFactory.generateTruck(Direction.RIGHT));
-        truck.getSprite().setPostion(0, 0);
-        truck.setSpeed(10);
-        activeVehicles.add(truck);
-
-
         generateLanes(12);
 
     }
 
     public void update(double dt, Input input){
+        updateLanes(dt);
         player.update(dt, input);
+        
         updateVehicles(dt);
 
 
@@ -51,12 +48,42 @@ public class GameManager {
         return false;
     }
 
-    void updateVehicles(double dt){
-        for(Vehicle vehicle : activeVehicles)
-            vehicle.update(dt);
+    void updateLanes(double dt){
+        for(Lane lane : lanes){
+            Vehicle v = lane.update(dt);
+            if(v != null)
+                activeVehicles.add(v);
+        }
+
     }
 
-    boolean gameOver(){return gameOver;}
+    void updateVehicles(double dt){
+        double[] playerPosition = player.getSprite().getEntityPosition();
+        double playerX = playerPosition[0];
+        double playerY = playerPosition[1];
+
+        var it = activeVehicles.iterator();
+        while (it.hasNext()) {
+            Vehicle vehicle = it.next();
+
+            double[] vehiclePosition = vehicle.getSprite().getEntityPosition();
+            double vehicleX = vehiclePosition[0];
+            double vehicleY = vehiclePosition[1];
+
+            if (shouldRemoveVehicle(vehicleX, vehicleY, playerX, playerY)) {
+                it.remove();
+            } else {
+                vehicle.update(dt);
+            }
+        }
+    }
+
+    private boolean shouldRemoveVehicle(double x1, double y1, double x2, double y2) {
+        double distance = Math.hypot(x2 - x1, y2 - y1);
+        return distance > WindowManager.WINDOW_WIDTH * 2;
+    }
+
+    public boolean gameOver(){return gameOver;}
 
     public List<Sprite> getAllSprites(){
         List<Sprite> sprites = new ArrayList<>();

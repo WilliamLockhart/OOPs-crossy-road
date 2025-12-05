@@ -13,7 +13,7 @@ public class HopAnimator {
     private double targetX, targetY;
 
     private static final double HOP_DURATION = 0.15; // seconds
-    private static final double HOP_DISTANCE = 64;   // pixels
+    private static final double HOP_DISTANCE = 50;   // pixels
     private static final double JUMP_HEIGHT = 16;    // pixels
 
 
