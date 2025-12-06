@@ -1,5 +1,9 @@
 # OOPs Crossy Road
  
+
+# People
+* Will Lockhart and Evy Ng
+
 # Patterns
 * observer: used in entity/behavior/ for play sound
 * factory: used throughout, inside entity/ sprite/
