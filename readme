@@ -11,6 +11,8 @@
 * singelton in graphics/Assets.java
 * builder pattern in entity/vehicleBuilder.java used in
 
+# Dependency Injection 
+* used throughout, example found in GameManager.java
 
 # To Run The Program:
 * linux:  ./gradlew clean run
@@ -18,4 +20,4 @@
 * mac: idk if its working on mac
 
 # Demo Video
-![View Demo](https://github.com/WilliamLockhart/OOPs-crossy-road/blob/main/Demo.mp4)
+![View Demo](https://youtu.be/FJEiy0EY2cA)
