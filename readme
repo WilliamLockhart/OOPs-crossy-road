@@ -16,3 +16,6 @@
 * linux:  ./gradlew clean run
 * windows: .\gradlew.bat clean run
 * mac: idk if its working on mac
+
+# Demo Video
+[View Demo](Demo.mp4)
