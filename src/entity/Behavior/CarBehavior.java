@@ -12,8 +12,4 @@ public class CarBehavior extends Behavior {
         EventBus.getInstance().postMessage(EventType.CarNoise, "Car honk!");
     }
 
-    @Override
-    public void doAction() {
-        // no special action yet
-    }
 }

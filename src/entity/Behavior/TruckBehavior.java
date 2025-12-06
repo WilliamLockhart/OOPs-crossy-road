@@ -11,8 +11,4 @@ public class TruckBehavior extends Behavior {
     public void playSound() {
         EventBus.getInstance().postMessage(EventType.TruckNoise, "Truck horn!");
     }
-
-    @Override
-    public void doAction() {
-    }
 }

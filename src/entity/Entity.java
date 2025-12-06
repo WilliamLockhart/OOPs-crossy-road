@@ -30,7 +30,6 @@ import sprite.*;
         public HitBox getHitBox(){return hitBox;}
 
         public void playSound(){behavior.playSound();}
-        public void doAction(){behavior.doAction();}
 
 
         //helper functions
