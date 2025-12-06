@@ -18,7 +18,4 @@
 * mac: idk if its working on mac
 
 # Demo Video
-
-<video controls>
-  <source src="Demo.mp4" type="video/mp4">
-</video>
+![View Demo](https://github.com/WilliamLockhart/OOPs-crossy-road/blob/main/Demo.mp4)
