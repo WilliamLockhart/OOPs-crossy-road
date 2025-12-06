@@ -12,7 +12,6 @@ import entity.player.*;
 public class GameManager {
     private Player player;
     private boolean gameOver;
-    private int tempCounter = 0;
     private List<Lane> lanes;
 
     public GameManager(Player player) {
@@ -27,8 +26,6 @@ public class GameManager {
         player.update(dt, input);
 
         if (playerHitAVehicle()) {
-            tempCounter++;
-            System.out.printf("Bang! Count = %d%n", tempCounter);
             gameOver= true;
         }
     }
@@ -60,8 +57,9 @@ public class GameManager {
     }
 
     void generateLanes(int numberOfLanes) {
+        int leftRightOdds = 2;
         for (int i = 0; i < numberOfLanes; i++) {
-            if (i % 2 == 0) {
+            if (i % leftRightOdds == 0) {
                 lanes.add(new RoadLane(i));
             } else {
                 lanes.add(new GrassLane(i));

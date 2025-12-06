@@ -13,7 +13,7 @@ import entity.vehicle.Vehicle.Direction;
 public class RoadLane extends Lane {
     private static final String fileName = "road.png";
     private static final double MIN_INTERVAL = 5.0;
-    private static final double MAX_INTERVAL = 8.0;
+    private static final double MAX_INTERVAL = 20.0;
 
     private final double vehicleSpeed;
     private final Direction roadDirection;

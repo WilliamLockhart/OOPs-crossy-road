@@ -8,8 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-
-
 import observer.*;
 import javafx.scene.paint.Color;
 import sprite.SpriteFactory;
@@ -47,6 +45,7 @@ public class CrossyRoadApp extends Application {
             e.printStackTrace();
             audioObserver = new NoAudioObserver();
         }
+
         EventBus bus = EventBus.getInstance();
         bus.attach(audioObserver, EventType.CarNoise);
         bus.attach(audioObserver, EventType.TruckNoise);
@@ -54,8 +53,9 @@ public class CrossyRoadApp extends Application {
         //input handling and game logic
         input = new Input(windowManager.getWindowSceneObject().getScene());
         double playerScale =.05;
+        double spawnPosition = 100;
         gameManager = new GameManager(
-            new Player(SpriteFactory.generateSprite("duck.png", 100, 100, WindowManager.WINDOW_WIDTH* playerScale, WindowManager.WINDOW_HEIGHT*playerScale))
+            new Player(SpriteFactory.generateSprite("duck.png", spawnPosition, spawnPosition, WindowManager.WINDOW_WIDTH* playerScale, WindowManager.WINDOW_HEIGHT*playerScale))
         );
         gameLoop();
     }

@@ -37,6 +37,9 @@ public class ImageRenderer {
         Rectangle rect = hitBox.getRectangle();
         if (rect == null) { return;}
 
+
+
+        //RGBA 
         rect.setFill(Color.color(1, 0, 0, 0.4));
         rect.setStroke(Color.RED);
         children.add(rect);

@@ -35,7 +35,7 @@ public class Vehicle extends Entity{
         }
     
 
-        int honkChance = 10000;               // 1 in honkChance chance
+        int honkChance = 2000;               // 1 in honkChance chance
     boolean shouldHonk = (random.nextInt(honkChance) == 0);
     if (shouldHonk)
         playSound();
