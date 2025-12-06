@@ -13,6 +13,7 @@ public class FactoryTest {
         try {
             Platform.startup(() -> {});
         } catch (IllegalStateException e) {
+            // JavaFX was already initialized
         }
     }
 
