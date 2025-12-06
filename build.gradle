@@ -8,13 +8,15 @@ repositories {
 def javafxVersion = '21'
 
 def os = org.gradle.internal.os.OperatingSystem.current()
+def arch = System.getProperty("os.arch")
 def platform
+
 if (os.isWindows()) {
     platform = 'win'
 } else if (os.isMacOsX()) {
-    platform = 'mac'
+    platform = arch.contains("aarch64") ? "mac-aarch64" : "mac"
 } else if (os.isLinux()) {
-    platform = 'linux'
+    platform = arch.contains("aarch64") ? "linux-aarch64" : "linux"
 } else {
     platform = 'linux'
 }
