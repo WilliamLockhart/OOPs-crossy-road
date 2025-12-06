@@ -9,4 +9,6 @@
 
 
 # To Run The Program:
- ./gradlew clean run
+* linux:  ./gradlew clean run
+* windows: .\gradlew.bat clean run
+* mac: idk if its working on mac

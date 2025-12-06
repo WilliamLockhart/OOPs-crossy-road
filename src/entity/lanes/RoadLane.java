@@ -9,6 +9,7 @@ import entity.HitBox.*;
 import entity.vehicle.*;
 import entity.vehicle.Vehicle.Direction;
 
+
 public class RoadLane extends Lane {
     private static final String fileName = "road.png";
     private static final double MIN_INTERVAL = 5.0;
@@ -77,10 +78,12 @@ public class RoadLane extends Lane {
 
     private void addVehicle() {
         double[] laneSpawn = getLanePositionForCarTravellingInDirection(roadDirection);
-        boolean spawnTruck = (random.nextInt(4) == 0);
+
+        int truckSpawnOdds = 4;               // 1 in 4 chance
+        boolean shouldSpawnTruck = (random.nextInt(truckSpawnOdds) == 0);
         Vehicle vehicle;
 
-        if (spawnTruck) { //god i hate the truck, its taller than car so the centerY is too high for the road and looks off below is to make it shift lower adjust values 
+        if (shouldSpawnTruck) { //god i hate the truck, its taller than car so the centerY is too high for the road and looks off below is to make it shift lower adjust values 
             vehicle = VehicleFactory.generateTruck(roadDirection);
             double[] dims = vehicle.getSprite().getDimensions();
             double spriteHeight = dims[1];

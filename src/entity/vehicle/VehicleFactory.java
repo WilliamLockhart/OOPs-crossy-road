@@ -3,7 +3,7 @@ package entity.vehicle;
 import sprite.*;
 import entity.Behavior.*;
 import entity.HitBox.*;
-
+import window.WindowManager;
 public class VehicleFactory {
 
     private static final String RIGHT_TRUCK_FILE = "Red_Truck.png";
@@ -12,8 +12,13 @@ public class VehicleFactory {
     private static final String RIGHT_CAR_FILE = "Purple_car.png";
     private static final String LEFT_CAR_FILE  = "Orange_car.png";
 
-    private static final double TRUCK_W = 200, TRUCK_H = 200;
-    private static final double CAR_W   = 100, CAR_H   = 100;
+    private static final double TRUCK_SIZE_OFFSET = .16;
+    private static final double CAR_SIZE_OFFSET = .08;
+    private static final double TRUCK_W = (WindowManager.WINDOW_WIDTH *TRUCK_SIZE_OFFSET); 
+    private static final double CAR_W   = (WindowManager.WINDOW_WIDTH *CAR_SIZE_OFFSET); 
+    
+    private static final double TRUCK_H = TRUCK_W*.9;
+    private static final double CAR_H   = CAR_W*.9;
 
     private static final double DEFAULT_X = -1000;
     private static final double DEFAULT_Y = -1000;

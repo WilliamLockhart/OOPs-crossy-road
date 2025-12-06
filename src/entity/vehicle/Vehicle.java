@@ -2,13 +2,14 @@ package entity.vehicle;
 import sprite.Sprite;
 import entity.Behavior.*;
 import entity.Entity;
+import java.util.Random;
 
 public class Vehicle extends Entity{
     public enum Direction{
         LEFT,
         RIGHT
     };
-    
+    private final Random random = new Random();
     private double speed;      
     private Direction direction;
     static final private double ANGLE_RAD = Math.toRadians(20.0);
@@ -32,6 +33,12 @@ public class Vehicle extends Entity{
                 moveEntity(-dx, -dy);
                 break;
         }
+    
+
+        int honkChance = 10000;               // 1 in honkChance chance
+    boolean shouldHonk = (random.nextInt(honkChance) == 0);
+    if (shouldHonk)
+        playSound();
 }
     public double getAngleRad(){return ANGLE_RAD;}
 

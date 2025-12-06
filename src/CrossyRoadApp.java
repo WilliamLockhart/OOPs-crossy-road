@@ -53,8 +53,9 @@ public class CrossyRoadApp extends Application {
 
         //input handling and game logic
         input = new Input(windowManager.getWindowSceneObject().getScene());
+        double playerScale =.05;
         gameManager = new GameManager(
-            new Player(SpriteFactory.generateSprite("duck.png", 100, 100, 50, 50))
+            new Player(SpriteFactory.generateSprite("duck.png", 100, 100, WindowManager.WINDOW_WIDTH* playerScale, WindowManager.WINDOW_HEIGHT*playerScale))
         );
         gameLoop();
     }

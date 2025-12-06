@@ -11,9 +11,11 @@ import entity.HitBox.*;
 import entity.vehicle.*;;
 
 public abstract class Lane extends Entity {
-
-    private static final double LANE_WIDTH  = 1800.0;
-    private static final double LANE_HEIGHT = 100.0;
+   
+    private static final double LANE_PERCENT_BIGGER_THAN_WINDOW = 1.6;//lane is at an angle so it must be bigger slightly 
+    private static final double LANE_PERCENT_SCREEN_HEIGHT = .15;
+    private static final double LANE_WIDTH  =  WindowManager.WINDOW_WIDTH*LANE_PERCENT_BIGGER_THAN_WINDOW;
+    private static final double LANE_HEIGHT = WindowManager.WINDOW_HEIGHT*LANE_PERCENT_SCREEN_HEIGHT;
     private static final double LANE_ANGLE = 20.0;
     private static final double LANE_ANGLE_RAD = Math.toRadians(LANE_ANGLE);
 
@@ -67,9 +69,9 @@ public abstract class Lane extends Entity {
         double stepY = -LANE_HEIGHT * Math.cos(LANE_ANGLE_RAD);
         return baseCenterY + index * stepY;
     }
-
+    
+    // Sprite center & dimensions
     protected double[] getLanePositionForCarTravellingInDirection(Vehicle.Direction carDirection) {
-        // Sprite center & dimensions
         double[] pos = laneSprite.getPosition(); // [centerX, centerY]
         double cx = pos[0];
         double cy = pos[1];
