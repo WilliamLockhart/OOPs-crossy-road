@@ -1,8 +1,8 @@
-package sprite;
+package Position;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
+import sprite.*;
 public class PositionTest {
 
     @Test

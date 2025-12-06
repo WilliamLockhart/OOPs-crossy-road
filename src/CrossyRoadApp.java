@@ -21,7 +21,7 @@ import sprite.Sprite;
 
 public class CrossyRoadApp extends Application {
 
-    private AudioObserver audioObserver;
+    private Observer audioObserver;
     private WindowManager windowManager;
     private ImageRenderer imageRenderer;
     private TextRenderer textRenderer;
@@ -39,7 +39,14 @@ public class CrossyRoadApp extends Application {
         textRenderer = new TextRenderer(children);
 
         //observer
-        audioObserver = new AudioObserver(); 
+        // just for WSL, javaFX doesnt work with wsl and will crash 
+        try {
+            audioObserver = new AudioObserver();
+        } catch (Exception e) {
+            System.err.println("[Audio] Failed to initialize audio, disabling sound.");
+            e.printStackTrace();
+            audioObserver = new NoAudioObserver();
+        }
         EventBus bus = EventBus.getInstance();
         bus.attach(audioObserver, EventType.CarNoise);
         bus.attach(audioObserver, EventType.TruckNoise);
