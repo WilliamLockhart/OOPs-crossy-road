@@ -76,31 +76,17 @@ public abstract class Lane extends Entity {
         double cx = pos[0];
         double cy = pos[1];
 
-        double halfW = LANE_WIDTH  / 2.0;
-        double halfH = LANE_HEIGHT / 2.0;
+        double halfW = LANE_WIDTH  / 2.0, halfH = LANE_HEIGHT / 2.0;
 
         double angle = Math.toRadians(laneSprite.getRotationDeg());
-        double cos = Math.cos(angle);
-        double sin = Math.sin(angle);
+        double cos = Math.cos(angle), sin = Math.sin(angle);
 
-        // Top-left
-        double tlx = cx + (-halfW * cos - -halfH * sin);
-        double tly = cy + (-halfW * sin + -halfH * cos);
-
-        // Bottom-left
-        double blx = cx + (-halfW * cos - halfH * sin);
-        double bly = cy + (-halfW * sin + halfH * cos);
-
-        // Top-right
-        double trx = cx + (halfW * cos - -halfH * sin);
-        double try_ = cy + (halfW * sin + -halfH * cos);
-
-        // Bottom-right
-        double brx = cx + (halfW * cos - halfH * sin);
-        double bry = cy + (halfW * sin + halfH * cos);
+        double tlx = cx + (-halfW * cos - -halfH * sin), tly = cy + (-halfW * sin + -halfH * cos);        // Top-left
+        double blx = cx + (-halfW * cos - halfH * sin), bly = cy + (-halfW * sin + halfH * cos);        // Bottom-left
+        double trx = cx + (halfW * cos - -halfH * sin), try_ = cy + (halfW * sin + -halfH * cos);        // Top-right
+        double brx = cx + (halfW * cos - halfH * sin), bry = cy + (halfW * sin + halfH * cos); // Bottom-right
 
         double px, py;
-
         switch (carDirection) {
             case LEFT:
                 px = (trx + brx) / 2.0;
