@@ -17,8 +17,8 @@ public class VehicleFactory {
     private static final double TRUCK_W = (WindowManager.WINDOW_WIDTH *TRUCK_SIZE_OFFSET); 
     private static final double CAR_W   = (WindowManager.WINDOW_WIDTH *CAR_SIZE_OFFSET); 
     
-    private static final double TRUCK_H = TRUCK_W*.9;
-    private static final double CAR_H   = CAR_W*.9;
+    private static final double TRUCK_H = TRUCK_W;
+    private static final double CAR_H   = CAR_W;
 
     private static final double DEFAULT_X = -1000;
     private static final double DEFAULT_Y = -1000;
