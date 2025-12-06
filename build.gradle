@@ -19,7 +19,7 @@ if (os.isWindows()) {
     platform = 'linux'
 }
 
-mainClassName = 'Main'
+mainClassName = 'CrossyRoadApp'
 
 sourceSets {
     main {

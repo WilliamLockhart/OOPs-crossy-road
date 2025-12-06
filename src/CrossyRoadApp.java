@@ -16,7 +16,7 @@ import java.util.List;
 import entity.player.*;
 import sprite.Sprite;
 
-public class Main extends Application {
+public class CrossyRoadApp extends Application {
 
 
     private WindowManager windowManager;
