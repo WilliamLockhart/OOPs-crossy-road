@@ -61,8 +61,9 @@ public class RoadLane extends Lane {
     public boolean hitAVehicle(HitBox playerHitBox) {
         for (Vehicle v : activeVehicles) {
             HitBox vehicleHitBox = v.getHitBox();
-            if (playerHitBox.checkCollision(vehicleHitBox))
-                return true;
+            if (playerHitBox.checkCollision(vehicleHitBox)){
+                v.playSound();
+                return true;}
         }
         return false;
     }

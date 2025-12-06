@@ -1,18 +1,19 @@
 package entity.Behavior;
 
-public class CarBehavior extends Behavior{
-    public CarBehavior(){
+import observer.EventBus;
+import observer.EventType;
 
+public class CarBehavior extends Behavior {
+
+    public CarBehavior() { }
+
+    @Override
+    public void playSound() {
+        EventBus.getInstance().postMessage(EventType.CarNoise, "Car honk!");
     }
 
     @Override
-    public void playSound(){
-        //TODO add car noise sound USE OBSERVER
-        System.out.println("Car noise!");
-    }
-
-    @Override
-    public void doAction(){
-        //no special action for car
+    public void doAction() {
+        // no special action yet
     }
 }

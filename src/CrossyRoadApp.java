@@ -8,6 +8,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
+
+
+import observer.*;
 import javafx.scene.paint.Color;
 import sprite.SpriteFactory;
 import gameManager.*;
@@ -18,7 +21,7 @@ import sprite.Sprite;
 
 public class CrossyRoadApp extends Application {
 
-
+    private AudioObserver audioObserver;
     private WindowManager windowManager;
     private ImageRenderer imageRenderer;
     private TextRenderer textRenderer;
@@ -34,6 +37,15 @@ public class CrossyRoadApp extends Application {
         ObservableList<Node> children = windowManager.getWindowSceneObject().getRootPane().getChildren();
         imageRenderer = new ImageRenderer(children);
         textRenderer = new TextRenderer(children);
+
+
+        //observer
+        audioObserver = new AudioObserver();
+        EventBus bus = EventBus.getInstance();
+        bus.attach(audioObserver, EventType.CarNoise);
+        bus.attach(audioObserver, EventType.TruckNoise);
+
+
 
         //input handling and game logic
         input = new Input(windowManager.getWindowSceneObject().getScene());
