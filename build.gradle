@@ -7,7 +7,6 @@ repositories {
 
 def javafxVersion = '21'
 
-// Detect OS for JavaFX natives
 def os = org.gradle.internal.os.OperatingSystem.current()
 def platform
 if (os.isWindows()) {
@@ -25,7 +24,12 @@ mainClassName = 'Main'
 sourceSets {
     main {
         java {
-            srcDirs = ['src']
+            srcDirs = ['src'] 
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test']
         }
     }
 }
@@ -34,6 +38,11 @@ dependencies {
     implementation "org.openjfx:javafx-base:${javafxVersion}:${platform}"
     implementation "org.openjfx:javafx-controls:${javafxVersion}:${platform}"
     implementation "org.openjfx:javafx-graphics:${javafxVersion}:${platform}"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 run {

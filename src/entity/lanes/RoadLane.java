@@ -1,4 +1,4 @@
-package lanes;
+package entity.lanes;
 
 import java.util.Random;
 import java.util.ArrayList;

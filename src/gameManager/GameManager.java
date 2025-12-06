@@ -1,12 +1,12 @@
 package gameManager;
 
-import lanes.*;
 import sprite.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import entity.HitBox.*;
+import entity.lanes.*;
 import entity.player.*;
 
 public class GameManager {

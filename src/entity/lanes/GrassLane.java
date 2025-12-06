@@ -1,4 +1,4 @@
-package lanes;
+package entity.lanes;
 
 public class GrassLane extends Lane{
     private static final String fileName = "grass.png";

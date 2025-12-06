@@ -1,4 +1,4 @@
-package lanes;
+package entity.lanes;
 
 import sprite.Sprite;
 import sprite.SpriteFactory;
