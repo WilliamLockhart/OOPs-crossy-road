@@ -32,7 +32,6 @@ public class EventBus {
     public void postMessage(EventType eventType, String description) {
         Set<Observer> notifySet = new HashSet<>();
         notifySet.addAll(eventToObserver.get(eventType));
-        notifySet.addAll(eventToObserver.get(EventType.All));
         for (Observer observer : notifySet) {
             observer.update(description);
         }

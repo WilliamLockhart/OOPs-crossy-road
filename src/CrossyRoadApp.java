@@ -29,7 +29,7 @@ public class CrossyRoadApp extends Application {
     private Input input;
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws Exception {
         //creates the stuff for the window and rendering
         windowManager = new WindowManager();
         windowManager.start(stage);
@@ -38,20 +38,20 @@ public class CrossyRoadApp extends Application {
         imageRenderer = new ImageRenderer(children);
         textRenderer = new TextRenderer(children);
 
-
         //observer
-        audioObserver = new AudioObserver();
+        audioObserver = new AudioObserver(); 
         EventBus bus = EventBus.getInstance();
         bus.attach(audioObserver, EventType.CarNoise);
         bus.attach(audioObserver, EventType.TruckNoise);
 
-
-
         //input handling and game logic
         input = new Input(windowManager.getWindowSceneObject().getScene());
-        gameManager = new GameManager(new Player(SpriteFactory.generateSprite("duck.png", 100, 100, 50, 50)));
+        gameManager = new GameManager(
+            new Player(SpriteFactory.generateSprite("duck.png", 100, 100, 50, 50))
+        );
         gameLoop();
     }
+
 
     private void remderGame(){
         var root = windowManager.getWindowSceneObject().getRootPane();
